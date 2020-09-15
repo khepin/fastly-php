@@ -56,6 +56,16 @@ class FastlyFake implements FastlyInterface
         return new Response();
     }
 
+    /*
+     * {@inheritdoc}
+     */
+    public function purgeKeys($service, array $keys, array $options = [])
+    {
+        $this->calls[] = array('purgeKeys', $service, $keys, $options);
+
+        return new Response();
+    }
+
     /**
      * @param $num
      *

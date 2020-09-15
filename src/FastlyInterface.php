@@ -43,4 +43,13 @@ interface FastlyInterface {
      * @return ResponseInterface
      */
     public function purgeKey($service, $key, array $options = []);
+
+    /**
+     * @param string $service
+     * @param array  $keys
+     * @param array  $options
+     *
+     * @return ResponseInterface
+     */
+    public function purgeKeys($service, array $keys, array $options = []);
 }

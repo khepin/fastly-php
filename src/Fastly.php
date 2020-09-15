@@ -76,4 +76,19 @@ class Fastly implements FastlyInterface
 
         return $this->send('POST', $url, $options);
     }
+
+    /*
+     * {@inheritdoc}
+     */
+    public function purgeKeys($service, array $keys, array $options = [])
+    {
+        $url = '/service/' . urlencode($service) . '/purge/';
+
+        $keyHeader = join(' ', $keys);
+        $headers = $options['headers'] ?? '';
+        $headers['Surrogate-Key'] = $keyHeader;
+        $options['headers'] = $headers;
+
+        return $this->send('POST', $url, $options);
+    }
 }
